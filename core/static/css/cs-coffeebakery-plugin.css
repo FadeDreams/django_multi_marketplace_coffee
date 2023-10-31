@@ -19,7 +19,7 @@
 }
 
 .main-header .login-option a.get-start-btn {
-    background-color: #c33332;
+    background-color: #800080;
     border-radius: 3px;
     color: #fff;
     font-family: "Montserrat", sans-serif;
@@ -169,7 +169,7 @@
 
 .login-form .input-filed input[type="submit"],
 .login-form .input-filed input[type="button"] {
-    background-color: #c33332;
+    background-color: #800080;
     border: 0;
     border-radius: 0px;
     color: #fff;
@@ -254,7 +254,7 @@
 }
 
 .login-form .cs-demo-login a {
-    color: #c33332;
+    color: #800080;
     float: right;
 }
 
@@ -287,7 +287,7 @@
 
 .btn-red,
 .btn-green {
-    background-color: #c33332;
+    background-color: #800080;
     border-radius: 3px;
     color: #fff;
     font-size: 12px;
@@ -300,7 +300,7 @@
 }
 
 .login-form .cs-demo-login .cs-demo-login-lable {
-    color: #c33332;
+    color: #800080;
 }
 
 .login-form .cs-demo-login .login-switches .btn-red {
@@ -873,7 +873,7 @@
 }
 
 .delivery-timing ul li ul.delivery-dropdown li>a .opend-time.close-day {
-    color: #c33332;
+    color: #800080;
 }
 
 .delivery-timing ul li ul.delivery-dropdown li>a .opend-day {
@@ -1112,7 +1112,7 @@
 }
 
 .main-search .coffeebakery-locations-ajax-list li.no-location-found {
-    color: #c33332;
+    color: #800080;
 }
 
 
@@ -1123,7 +1123,7 @@
 }
 
 .main-search.fancy.bg-holder {
-    background-color: #c33332;
+    background-color: #800080;
     padding: 20px 20px 0;
 }
 
@@ -2390,7 +2390,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: #c33332;
+    background: #800080;
     -webkit-transform: scale(0);
     -ms-transform: scale(0);
     -moz-transform: scale(0);
@@ -2870,7 +2870,7 @@
 }
 
 .user-dashboard .chosen-container-multi .chosen-choices li.search-choice .search-choice-close:hover:after {
-    color: #c33332;
+    color: #800080;
 }
 
 .user-dashboard .chosen-container-multi .chosen-drop .result-selected {
@@ -3340,7 +3340,7 @@
 }
 
 .user-dashboard-menu>ul>li>ul li.user-add-coffee>a {
-    color: #c33332;
+    color: #800080;
     padding-bottom: 7px;
     padding-left: 20px;
     padding-top: 8px;
@@ -3483,7 +3483,7 @@
 
 .user-nav-list ul li.active a,
 .user-nav-list ul li.active i {
-    color: #c33332;
+    color: #800080;
 }
 
 .user-nav-list ul li a {
@@ -4576,9 +4576,9 @@ ul.sub-nav li a {
 
 .load-more-btn,
 .btn-load-more {
-    border: 1px solid #c33332;
+    border: 1px solid #800080;
     border-radius: 3px;
-    color: #c33332;
+    color: #800080;
     display: inline-block;
     font-size: 12px;
     font-weight: 400;
@@ -4594,7 +4594,7 @@ ul.sub-nav li a {
 .load-more-btn:hover,
 .btn-load-more:hover {
     color: #fff;
-    background: #c33332;
+    background: #800080;
 }
 
 
@@ -5793,7 +5793,7 @@ ul.sub-nav li a {
 }
 
 .user-order .error-message {
-    color: #c33332;
+    color: #800080;
     font-size: 12px;
     margin: 0 0 12px;
     display: block;
@@ -5832,7 +5832,7 @@ ul.sub-nav li a {
 
 .user-order input[type="submit"],
 .user-order .menu-order-confirm {
-    background-color: #c33332;
+    background-color: #800080;
     border: none;
     display: block;
     border-radius: 3px;
@@ -5862,7 +5862,7 @@ ul.sub-nav li a {
     -webkit-animation: 0.6s ease-out 0s normal none 1 running fullexpand;
     -moz-animation: 0.6s ease-out 0s normal none 1 running fullexpand;
     animation: 0.6s ease-out 0s normal none 1 running fullexpand;
-    background-color: #c33332;
+    background-color: #800080;
 }
 
 .user-dashboard .coffeebakery_loader .loader-img i {
@@ -7385,7 +7385,7 @@ a.add-menu-item:not(.add-menu-item-list) {
 .service-list .menu-items-list-holder .close-menu-item {
     float: right;
     margin-top: 10px;
-    color: #c33332;
+    color: #800080;
 }
 
 .service-list .menu-items-list .icon-img-holder {
@@ -8967,7 +8967,7 @@ ul.user-orders-fliters li a {
 
 .user-dashboard .listing.simple .list-option .delete-shortlist {
     margin-left: 10px;
-    color: #c33332;
+    color: #800080;
     position: relative;
     width: 20px;
     height: 20px;
@@ -9562,7 +9562,7 @@ span.sticky-stop {
 .modal-dialog .booking-status-holder p {
     margin-bottom: 0;
     color: #fff !important;
-    background: #c33332;
+    background: #800080;
     padding: 10px;
     text-align: center;
     border-radius: 6px;
@@ -9782,7 +9782,7 @@ ul.categories-order.table-generic>li:nth-child(odd) {
 .modal-dialog .menu-selection-container button {
     float: left;
     width: auto;
-    background-color: #c33332;
+    background-color: #800080;
     border: none;
     display: block;
     border-radius: 3px;
@@ -9802,7 +9802,7 @@ ul.categories-order.table-generic>li:nth-child(odd) {
     padding: 12px 10px;
     font-size: 12px;
     font-family: 'Montserrat', sans-serif;
-    background-color: #c33332;
+    background-color: #800080;
     color: #fff;
     font-weight: 700;
     line-height: 13px;
@@ -9821,7 +9821,7 @@ ul.categories-order.table-generic>li:nth-child(odd) {
 }
 
 .modal-dialog .newsletter input[type="button"] {
-    background-color: #c33332;
+    background-color: #800080;
     width: 100%;
     border: none;
     display: block;
@@ -10069,7 +10069,7 @@ ul.categories-order.table-generic>li:nth-child(odd) {
 }
 
 .add-new-review-holder .form-element input[type="button"] {
-    background-color: #c33332;
+    background-color: #800080;
     border: none;
     display: block;
     border-radius: 3px;
@@ -10110,7 +10110,7 @@ ul.categories-order.table-generic>li:nth-child(odd) {
     position: absolute;
     top: 0;
     right: 0;
-    color: #c33332;
+    color: #800080;
 }
 
 .add-new-review-holder .form-element.message-length {
@@ -10261,7 +10261,7 @@ ul.categories-order.table-generic>li:nth-child(odd) {
 .user-dashboard .coffee-settings-nav.nav-tabs li:hover a {
     -webkit-box-shadow: none;
     box-shadow: none;
-    background-color: #c33332;
+    background-color: #800080;
     color: #fff !important;
     border: 0;
 }
@@ -10435,7 +10435,7 @@ ul.categories-order.table-generic>li:nth-child(odd) {
 
 .user-suggest-list>.element-title>h5+span em {
     display: inline-block;
-    color: #c33332;
+    color: #800080;
     cursor: pointer;
 }
 
@@ -10511,7 +10511,7 @@ ul.categories-order.table-generic>li:nth-child(odd) {
 }
 
 .city-autocomplete::-webkit-scrollbar-thumb {
-    background: #c33332;
+    background: #800080;
     border: 3px none #ffffff;
     border-radius: 0px;
 }
@@ -10581,7 +10581,7 @@ ul.categories-order.table-generic>li:nth-child(odd) {
 }
 
 .user-reviews-list .close {
-    color: #c33332;
+    color: #800080;
     font-size: 18px;
     font-weight: normal;
     opacity: 1;
@@ -10702,7 +10702,7 @@ ul.categories-order.table-generic>li:nth-child(odd) {
 
 .earning-calculation li a span {
     font-weight: normal;
-    color: #c33332;
+    color: #800080;
 }
 
 .user-dashboard .earning-calculation {
@@ -11099,7 +11099,7 @@ a#id_falsebtn {
 .woocommerce #respond input[type="submit"] {
     letter-spacing: 1px;
     text-transform: uppercase;
-    background-color: #c33332;
+    background-color: #800080;
     font-family: "Open Sans", sans-serif;
 }
 
@@ -11177,7 +11177,7 @@ a#id_falsebtn {
     border: 0;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    border-top: 2px solid #c33332;
+    border-top: 2px solid #800080;
     border-right: 1px solid #dddde5;
     border-left: 1px solid #dddde5;
     border-radius: 0 !important;
@@ -11218,7 +11218,7 @@ a#id_falsebtn {
     position: absolute;
     top: -10px;
     right: 15px;
-    color: #c33332;
+    color: #800080;
     cursor: pointer;
     display: inline-block;
     z-index: 10;
@@ -11464,7 +11464,7 @@ a#id_falsebtn {
 }
 
 .review-listing .morelink {
-    color: #c33332;
+    color: #800080;
 }
 
 .review-listing>ul>li.review_reply:last-child>.list-holder {
@@ -11483,7 +11483,7 @@ a#id_falsebtn {
 .suggestion-search .btn-default {
     display: inline-block;
     background-image: none;
-    background-color: #c33332;
+    background-color: #800080;
     color: #fff;
     height: 38px;
     width: 35px;
@@ -11547,8 +11547,8 @@ a#id_falsebtn {
 }
 
 .review-reply-btn {
-    color: #c33332;
-    border-color: #c33332;
+    color: #800080;
+    border-color: #800080;
     text-decoration: none;
     outline: none;
     -webkit-box-shadow: none;
@@ -11739,7 +11739,7 @@ textlocation {
     border: 0;
     line-height: normal;
     padding: 4px 10px;
-    background: #c33332;
+    background: #800080;
     border-radius: 2px;
     display: inline-block;
     vertical-align: middle;
@@ -11848,7 +11848,7 @@ div.daterangepicker td.start-date.end-date {
 
 div.daterangepicker td.available:hover,
 div.daterangepicker th.available:hover {
-    background-color: #c33332;
+    background-color: #800080;
     color: #fff;
 }
 
@@ -12334,7 +12334,7 @@ div.daterangepicker {
 }
 
 .radio-holder .input-radio label:after {
-    background: #c33332;
+    background: #800080;
     border-radius: 100px;
     content: "";
     display: inline-block;
@@ -12829,7 +12829,7 @@ p.coffee-desc {
     left: -14px;
     font-size: 8px;
     top: 0;
-    color: #c33332;
+    color: #800080;
     font-family: 'icomoon' !important;
     font-style: normal;
 }
@@ -13145,7 +13145,7 @@ h4 a {
 }
 
 .wp-coffeebakery .woocommerce button.button.alt:hover {
-    background-color: #c33332;
+    background-color: #800080;
 }
 
 
@@ -13262,7 +13262,7 @@ ul.dashboard-nav li a:hover,
 .grid-slider .swiper-button-prev:hover i,
 .grid-slider .swiper-button-next:hover i,
 .company-holder.simple .company-logo .text-holder .post-title h6 a:hover {
-    color: #c33332 !important;
+    color: #800080 !important;
 }
 
 .bgcolor,
@@ -13311,12 +13311,12 @@ ul.dashboard-nav li a:hover,
 #header.transparent-header.court.pinned .main-header,
 .main-location>ul>li.choose-location ul ul::-webkit-scrollbar-thumb,
 .icon-boxes.fancy:hover .img-holder figure i {
-    background-color: #c33332 !important;
+    background-color: #800080 !important;
 }
 
 .max-location-height::-webkit-scrollbar-thumb,
 .slicknav_nav::-webkit-scrollbar-thumb {
-    background-color: #c33332 !important;
+    background-color: #800080 !important;
 }
 
 .br-color,
@@ -13334,13 +13334,13 @@ ul.dashboard-nav li a:hover,
 .transparent-header .main-header .login-option a.get-start-btn:hover,
 #footer.footer-style-4 .social-media>li>a:hover,
 .location-holder.modern a.more-btn {
-    border-color: #c33332 !important;
+    border-color: #800080 !important;
 }
 
 .coffee-menu-nav.nav-tabs>li a:hover,
 .coffee-menu-nav.nav-tabs>li a:focus,
 .coffee-menu-nav.nav-tabs>li.active a {
-    border-top-color: #c33332 !important;
+    border-top-color: #800080 !important;
 }
 
 body {
@@ -13487,7 +13487,7 @@ h6 a {
 #header .main-navigation ul li.current-menu-ancestor>a:after,
 #header .main-navigation ul li.current-menu-item>a,
 #header .main-navigation ul li.current-menu-item>a:after {
-    color: #c33332 !important;
+    color: #800080 !important;
 }
 
 #header .main-navigation ul ul ul,
@@ -13910,7 +13910,7 @@ h6 a {
 .textwidget span.button-med a {
     display: inline-block;
     padding: 6px 12px;
-    background: #c33332;
+    background: #800080;
     border-radius: 5px;
     color: #fff;
 }
@@ -14129,7 +14129,7 @@ h6 a {
 
 .widget_calendar #wp-calendar tbody tr td a {
     display: block;
-    border: 1px solid #c33332;
+    border: 1px solid #800080;
 }
 
 .widget_calendar #wp-calendar tbody tr td#today a {
@@ -16563,7 +16563,7 @@ h6 a {
         border: 0;
     }
     .coffee-menu-nav.nav-tabs>li.active a {
-        border-bottom: 1px solid #c33332 !important;
+        border-bottom: 1px solid #800080 !important;
     }
     .coffee-menu-nav.nav-tabs {
         border: 0;
@@ -19306,7 +19306,7 @@ ul.user-controls li:first-child i {
 }
 
 .wp-coffeebakery.woocommerce ul.products li.product a.added_to_cart {
-    background: #c33332;
+    background: #800080;
     border-radius: 2px;
     border: 0;
     color: #fff;
@@ -19783,7 +19783,7 @@ ul.user-controls li:first-child i {
 }
 
 .woocommerce .place-order button.button:hover {
-    background: #c33332;
+    background: #800080;
 }
 
 
