@@ -2,6 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=django
 *.secret
 *.vim
+*.env
 ### Django ###
 *.log
 *.pot

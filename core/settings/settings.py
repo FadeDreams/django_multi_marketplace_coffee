@@ -133,3 +133,17 @@ AUTH_USER_MODEL = 'users.User'
 
 GDAL_LIBRARY_PATH = '/usr/lib/libgdal.so'  # Replace this path with the actual path to your libgdal.so library
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = int(os.getenv("EMAIL_PORT"))  # Convert to integer
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")  # Corrected variable name
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")
+EMAIL_USE_TLS = bool(os.getenv("EMAIL_USE_TLS"))  # Convert to boolean
+# EMAIL_USE_SSL = bool(os.getenv("EMAIL_USE_SSL"))  # You can add this if needed
+
+TESTEMAIL1 = os.getenv("TESTEMAIL1")
+TESTEMAIL2 = os.getenv("TESTEMAIL2")
+

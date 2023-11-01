@@ -1,5 +1,7 @@
+import os
 from .settings import *
-
+from dotenv import load_dotenv
+load_dotenv()
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -21,4 +23,5 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
 
