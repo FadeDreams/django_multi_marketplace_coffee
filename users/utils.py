@@ -66,9 +66,3 @@ def sendemail():
     mail_subject = 'Please activate your account'
     email_template = 'users/emails/account_verification_email.html'
     send_verification_email("xxx", settings.TESTEMAIL1 , mail_subject, email_template)
-    # subject = 'subject'
-    # message = 'message'
-    # from_email = 'whitemres@example.com'
-    # recipient_list = ['whitemres2@example.com']
-
-    # send_mail(subject, message, EMAIL_HOST_USER, recipient_list, fail_silently=False)
