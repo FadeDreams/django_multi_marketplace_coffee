@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from .forms import UserForm
 from coffee.forms import CoffeeForm
 from .models import User, UserProfile
+from coffee.models import Coffee
 from . import utils
 
 # def sendemail(request):
@@ -125,14 +126,20 @@ def logout(request):
     return redirect('login')
 
 @login_required(login_url='login')
-@user_passes_test(utils.check_customer_role)
+# @user_passes_test(utils.check_customer_role)
 def userDashboard(request):
-    return render(request, 'users/dashboard.html')
+    # print("roleeeeeeeeee", request.user.role)
+    # print("roleeeeeeeeee", request.user.first_name)
+    return render(request, 'users/customerdashboard.html', {'user': request.user})
 
 @login_required(login_url='login')
 @user_passes_test(utils.check_coffee_role)
 def coffeeDashboard(request):
-    return render(request, 'users/dashboard.html')
+    # print("coffeeDashboard", request.user)
+    # coffee = Coffee.objects.get(user=request.user)
+    # print(coffee)
+    # return render(request, 'users/coffeedashboard.html', {'coffee': coffee})
+    return render(request, 'users/coffeedashboard.html')
 
 @login_required(login_url='login')
 def myAccount(request):

@@ -34,15 +34,19 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +38 core/settings/dev.py
-badd +1 .env
-badd +38 users/utils.py
-badd +14 users/views.py
-badd +14 users/urls.py
+badd +1 ~/pyprj/dmvc
+badd +11 coffee/models.py
+badd +1 .secret
+badd +31 templates/users/customerdashboard.html
+badd +1 templates/users/coffeedashboard.html
+badd +129 users/views.py
+badd +4 templates/home.html
+badd +15 templates/includes/cover.html
+badd +37 templates/includes/navbar.html
+badd +10 users/urls.py
 argglobal
 %argdel
 $argadd ~/pyprj/dmvc
-edit core/settings/dev.py
 wincmd t
 let s:save_winminheight = &winminheight
 let s:save_winminwidth = &winminwidth
@@ -50,15 +54,6 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-argglobal
-balt .env
-let s:l = 38 - ((19 * winheight(0) + 13) / 26)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 38
-normal! 0
-lcd ~/pyprj/dmvc
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
