@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <!-- Load the sidebar here -->
-                    {% include 'includes/v_sidebar.html' %}
+                    {% include 'includes/c_sidebar.html' %}
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                     <div class="user-dashboard loader-holder">
@@ -15,8 +15,8 @@
                             <hr>
                             <h6>Menu Categories</h6>
                             {% if categories %}
-                            <a href="{% url 'add_coffee' %}" class="btn btn-success float-right m-1"><i class="fa fa-plus" aria-hidden="true"></i> Add Coffee</a>
                             <a href="{% url 'add_category' %}" class="btn btn-info float-right m-1"><i class="fa fa-plus" aria-hidden="true"></i> Add Category</a>
+                            <a href="{% url 'add_coffee' %}" class="btn btn-info float-right m-1"><i class="fa fa-plus" aria-hidden="true"></i> Add Coffee</a>
                             <table class="table table-hover table-borderless">
                                 <tbody>
                                     {% for cat in categories %}
@@ -28,8 +28,8 @@
                                                 <small class="text-muted">{{cat.description}}</small></a>
                                         </td>
                                         <td class="text-right text-right-space">
-                                            <a href="{% url 'edit_category' cat.id %}" style="color:unset;"><i class="fa fa-edit" aria-hidden="true"></i></a> &nbsp; &nbsp; &nbsp;
-                                            <a href="{% url 'delete_category' cat.id %}" onclick="return confirm('Are you sure you want to delete this category?')"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+                                            <a href="{% url 'edit_category' cat.id %}" style="color:unset;"> edit <i class="fa fa-edit" aria-hidden="true"></i></a> &nbsp; &nbsp; &nbsp;
+                                            <a href="{% url 'delete_category' cat.id %}" onclick="return confirm('Are you sure you want to delete this category?')">delete<i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                     {% endfor %}

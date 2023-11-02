@@ -45,6 +45,7 @@ D_APPS = [
 MY_APPS = [
     'users',
     'coffee',
+    'cat',
 ]
 INSTALLED_APPS = D_APPS + MY_APPS
 

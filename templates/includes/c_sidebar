@@ -1,0 +1,4 @@
+            <!--<li class="{% if 'opening-hour' in request.path %}active{% endif %}"><a href="{% url 'opening_hours' %}"><i class="icon-menu5"></i>Opening Hours</a></li>-->
+            <!--<li class="{% if '/my_orders/' in request.path %}active{% endif %}"><a href="{% url 'coffee_my_orders' %}"><i class="icon-add_shopping_cart"></i>Orders</a></li>-->
+            <!-- <li><a href="cafe-earnings.html"><i class="icon-money"></i>Earnings</a></li> -->
+
