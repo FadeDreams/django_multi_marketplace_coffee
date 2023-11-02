@@ -75,6 +75,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 ####
                 'users.context_processors.get_coffee',
+                'bazaar.context_processors.get_cart_counter',
+                'bazaar.context_processors.get_cart_amounts',
+
                 
             ],
         },

@@ -88,18 +88,19 @@
                                         </div>
                                         <!-- coffee item -->
                                         <ul>
-                                            {% for coffee in category.coffeeitems.all %}
+                                            {% for cat in category.coffeeitem_set.all %}
+                                            
                                             <li>
-                                                <div class="image-holder"><img src="{{ coffee.image.url }}" alt="dish image"></div>
+                                                <div class="image-holder"><img src="{{ cat.image.url }}" alt="dish image"></div>
                                                 <div class="text-holder">
-                                                    <h6>{{ coffee }}</h6>
-                                                    <span>{{ coffee.description }}</span>
+                                                    <h6>{{ cat }}</h6>
+                                                    <span>{{ cat.description }}</span>
                                                 </div>
                                                 <div class="price-holder">
-                                                    <span class="price">€{{ coffee.price }}</span>
-                                                    <a href="#" class="decrease_cart" data-id="{{ coffee.id }}" data-url="{% url 'decrease_cart' coffee.id %}" style="margin-right: 28px;"><i class="icon-minus text-color"></i></a>
-                                                    <label id="qty-{{coffee.id}}">0</label>
-                                                    <a href="#" class="add_to_cart" data-id="{{ coffee.id }}" data-url="{% url 'add_to_cart' coffee.id %}"><i class="icon-plus text-color"></i></a>
+                                                    <span class="price">€{{ cat.price }}</span>
+                                                    <a href="#" class="decrease_cart" data-id="{{ cat.id }}" data-url="{% url 'decrease_cart' coffee.id %}" style="margin-right: 28px;">decrease<i class="icon-minus text-color"></i></a>
+                                                    <label id="qty-{{cat.id}}">0</label>
+                                                    <a href="#" class="add_to_cart" data-id="{{ cat.id }}" data-url="{% url 'add_to_cart' coffee.id %}">add<i class="icon-plus text-color"></i></a>
                                                 </div>
                                             </li>
                                             {% endfor %}
