@@ -26,8 +26,12 @@
                                 {% for coffee in coffeeitems %}
                                   <tr>
                                     <td class="text-left">{{ forloop.counter }}</td>
-                                    <td class="text-left"><img src="{{coffee.image.url}}" alt="Coffee Image" width="60">
-                                    <td class="text-left">
+                                      <td class="text-left">
+                                        {% if coffee.image.url %}
+                                        <img src="{{ coffee.image.url }}" alt="Coffee Image" width="60">
+                                        {% endif %}
+                                        </td>
+                                      <td class="text-left">
                                         <a href=""><p class="mb-0 font-weight-bold">{{ coffee }}</p>
                                         <small class="text-muted">{{coffee.description}}</small></a>
                                     </td>

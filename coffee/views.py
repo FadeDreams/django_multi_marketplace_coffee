@@ -55,7 +55,7 @@ def menus(request):
     }
     return render(request, 'coffee/menus.html', context)
 
-def coffeeitems_by_category():
+def coffeeitems_by_category(request, pk=None):
     ...
 
 
@@ -118,11 +118,62 @@ def delete_category(request, pk=None):
     return redirect('menus')
     
 
-def add_coffee():
-    ...
+@login_required(login_url='login')
+@user_passes_test(utils.check_coffee_role)
+def add_coffee(request):
+    if request.method == 'POST':
+        form = CoffeeItemForm(request.POST, request.FILES)
+        if form.is_valid():
+            coffeetitle = form.cleaned_data['coffee_name']
+            coffee = form.save(commit=False)
+            coffee.coffee = get_coffee(request)
+            coffee.slug = slugify(coffeetitle)
+            form.save()
+            messages.success(request, 'Coffee Item added successfully!')
+            return redirect('coffeeitems_by_category', coffee.category.id)
+        else:
+            print(form.errors)
+    else:
+        form = CoffeeItemForm()
+        # only prints categories which belongs to logged in user
+        form.fields['category'].queryset = Category.objects.filter(coffee=get_coffee(request))
+    context = {
+        'form': form,
+    }
+    return render(request, 'coffee/add_coffee.html', context)
 
-def edit_coffee():
-    ...
 
-def delete_coffee():
-    ...
+@login_required(login_url='login')
+@user_passes_test(utils.check_coffee_role)
+def edit_coffee(request, pk=None):
+    coffee = get_object_or_404(CoffeeItem, pk=pk)
+    if request.method == 'POST':
+        form = CoffeeItemForm(request.POST, request.FILES, instance=coffee)
+        if form.is_valid():
+            coffeetitle = form.cleaned_data['coffee_name']
+            coffee = form.save(commit=False)
+            coffee.coffee = get_coffee(request)
+            coffee.slug = slugify(coffeetitle)
+            form.save()
+            messages.success(request, 'Coffee Item updated successfully!')
+            return redirect('coffeeitems_by_category', coffee.category.id)
+        else:
+            print(form.errors)
+    else:
+        form = CoffeeItemForm(instance=coffee)
+        # to display categories which belongs to logged in user
+        form.fields['category'].queryset = Category.objects.filter(coffee=get_coffee(request))
+    context = {
+        'form': form,
+        'coffee': coffee,
+    }
+    return render(request,'coffee/edit_coffee.html', context)
+
+
+@login_required(login_url='login')
+@user_passes_test(utils.check_coffee_role)
+def delete_coffee(request, pk=None):
+    coffee = get_object_or_404(CoffeeItem, pk=pk)
+    coffee.delete()
+    messages.success(request, 'Coffee Item has been deleted successfully!')
+    return redirect('coffeeitems_by_category', coffee.category.id)

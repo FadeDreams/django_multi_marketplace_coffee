@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
             name='CoffeeItem',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('coffee_title', models.CharField(max_length=100)),
+                ('coffee_name', models.CharField(max_length=100)),
                 ('slug', models.SlugField(blank=True, max_length=100)),
                 ('description', models.TextField(blank=True, max_length=250)),
                 ('price', models.DecimalField(decimal_places=2, max_digits=10)),
