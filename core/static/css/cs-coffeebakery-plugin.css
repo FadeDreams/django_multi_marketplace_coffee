@@ -312,7 +312,7 @@
 }
 
 .login-form .cs-demo-login .login-switches .btn-green {
-    background: #4cce4a;
+    background: #800080;
 }
 
 .login-form .cs-demo-login .login-switches a {
@@ -1167,7 +1167,7 @@
     font-size: 18px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    background-color: #4cce4a;
+    background-color: #800080;
     color: #fff;
 }
 

@@ -77,7 +77,7 @@
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 							<div class="login-option">
-								<a class="cs-color cs-popup-joinus-btn login-popup" data-target="#sign-in" data-toggle="modal" href="#user-register">Login / Register</a><a class="get-start-btn" href="register-coffee.html">
+                <a class="cs-color cs-popup-joinus-btn login-popup" data-target="#sign-in" data-toggle="modal" href="#user-register">Login / Register</a><a class="get-start-btn" href="{% url 'registerCoffee' %}">
 									Register
 									Coffeee </a>
 							</div>
@@ -97,10 +97,10 @@
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
 							<div class="element-title">
 								<h1 style="font-size: 40px; color: #505050; text-transform: uppercase; line-height: 50px; margin-bottom: 25px; text-align:center;">
-									We are in the business of coffee<br>our coffee do</h1>
+									find best cafe</h1>
 								<p style="font-size: 18px; letter-spacing: 1px; color: #505050; text-align:center;">
-									Ridiculus sociosqu
-									cursus neque cursus curae ante scelerisque vehicula.</p>
+									lorem 
+									lorem</p>
 							</div>
 						</div>
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
@@ -109,7 +109,7 @@
 									<div class="row">
 										<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
 											<div class="field-holder">
-												<input type="text" placeholder="Resturant name">
+												<input type="text" placeholder="cafe name">
 											</div>
 										</div>
 										<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
@@ -119,7 +119,7 @@
 														<div class="coffeebakery-locations-fields-group coffeebakery-focus-out">
 															<span class="coffeebakery-search-location-icon"><i class="icon-location"></i></span>
 															<span id="coffeeb_radius_location_open333" class="coffeeb-radius-location"><i class="icon-target5"></i></span>
-															<input type="text" class="location-field-text filter" placeholder="All Locations">
+															<input type="text" class="location-field-text filter" placeholder="area">
 														</div>
 														<div class="select-location" id="coffeebakery-radius-range333" style="display: none;">
 															<div class="select-popup popup-open">
@@ -191,47 +191,22 @@
 						</div>
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="company-logo">
-								<ul>
-									<li class="has-border">
-										<figure>
-											<a href="#"><img src="{% static 'extra-images/listing-logo18.png' %}" class="attachment-full size-full wp-post-image" alt=""></a>
-										</figure>
-									</li>
-									<li class="has-border">
-										<figure>
-											<a href="#"><img src="{% static 'extra-images/fb-coffee-02.jpg' %}" class="attachment-full size-full wp-post-image" alt=""></a>
-										</figure>
-									</li>
-									<li class="has-border">
-										<figure>
-											<a href="#"><img src="{% static 'extra-images/fb-coffee-04.jpg' %}" class="attachment-full size-full wp-post-image" alt=""></a>
-										</figure>
-									</li>
-									<li class="has-border">
-										<figure>
-											<a href="#"><img src="{% static 'extra-images/fb-coffee-06.jpg' %}" class="attachment-full size-full wp-post-image" alt=""></a>
-										</figure>
-									</li>
-									<li class="has-border">
-										<figure>
-											<a href="#"><img src="{% static 'extra-images/xlisting-logo03.png.pagespeed.ic_.aT-o9LinEJ.png' %}" class="attachment-full size-full wp-post-image" alt=""></a>
-										</figure>
-									</li>
-									<li class="has-border">
-										<figure>
-											<a href="#"><img src="{% static 'extra-images/listing-logo09.png" class="attachment-full size-full wp-post-image' %}" alt=""></a>
-										</figure>
-									</li>
-									<li class="has-border">
-										<figure>
-											<a href="#"><img src="{% static 'extra-images/listing-logo18.png" class="attachment-full size-full wp-post-image' %}" alt=""></a>
-										</figure>
-									</li>
-									<li class="has-border">
-										<figure>
-											<a href="#"><img src="{% static 'extra-images/fb-coffee-09.png" class="attachment-full size-full wp-post-image' %}" alt=""></a>
-										</figure>
-									</li>
+                      <ul>
+                          {% for coffee in coffees %}
+                          <li class="has-border">
+                              <figure>
+                                  {% if coffee.user_profile.profile_picture %}
+                                  {% comment %}<a href="{% url 'coffee_detail' coffee.coffee_slug %}">{% endcomment %}
+                                    <img width="50" src="{{ coffee.user_profile.profile_picture.url }}" class="attachment-full size-full wp-post-image" alt="Cafe Profile Image"></a>
+                                  {% else %}
+                                  {% comment %}<a href="{% url 'coffee_detail' coffee.coffee_slug %}">{% endcomment %}
+                                    <img width="50" src="{% static 'images/default-profile.png' %}" class="attachment-full size-full wp-post-image" alt="Default Cafe Profile Image"></a>
+
+                                  {% endif %}
+                              </figure>
+                          </li>
+                          {% endfor %}
+                      </ul>
 								</ul>
 							</div>
 						</div>

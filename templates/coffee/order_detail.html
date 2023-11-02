@@ -53,7 +53,7 @@
                                                         <td><img src="{{ item.coffeeitem.image.url }}" width="60" alt="Coffee Image"></td>
                                                         <td>
                                                             <p class="mb-0"><b>{{ item.coffeeitem }}</b></p>
-                                                            <a class="text-muted" href="{% url 'coffee_detail' item.coffeeitem.coffee.coffee_slug  %}">{{ item.coffeeitem.coffee.coffee_name }}</a>
+                                                            {% comment %}<a class="text-muted" href="{% url 'coffee_detail' item.coffeeitem.coffee.coffee_slug  %}">{{ item.coffeeitem.coffee.coffee_name }}</a>{% endcomment %}
 
                                                         </td>
                                                         <td>{{ item.quantity }} QTY</td>
