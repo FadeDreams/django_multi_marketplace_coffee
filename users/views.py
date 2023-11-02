@@ -126,7 +126,7 @@ def logout(request):
     return redirect('login')
 
 @login_required(login_url='login')
-# @user_passes_test(utils.check_customer_role)
+@user_passes_test(utils.check_customer_role)
 def userDashboard(request):
     # print("roleeeeeeeeee", request.user.role)
     # print("roleeeeeeeeee", request.user.first_name)

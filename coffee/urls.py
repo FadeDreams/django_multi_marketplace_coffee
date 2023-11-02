@@ -5,6 +5,6 @@ from users import views as usersViews
 
 urlpatterns = [
     path('', usersViews.coffeeDashboard, name='coffee'),
-    path('profile/', views.vprofile, name='vprofile'),
+    path('profile/', views.cprofile, name='cprofile'),
     
 ]
