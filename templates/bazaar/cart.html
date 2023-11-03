@@ -17,32 +17,40 @@
                                     </div>
                                     <div id="menu-item-list-6272" class="menu-itam-list">
                                         <ul>
-                                            {% if cart_items %} {% for item in cart_items %}
-                                            <li id="cart_item-{{ item.id }}">
-                                                <div class="image-holder"><img src="{{ item.coffeeitem.image.url }}" alt="dish image"></div>
-                                                <div class="text-holder">
-                                                    <h6>{{ item.coffeeitem }}</h6>
-                                                    <span>{{ item.coffeeitem.description }}</span>
-                                                    {% comment %}<a href="{% url 'coffee_detail' item.coffeeitem.coffee.coffee_slug %}" class="badge badge-warning">{{ item.coffeeitem.coffee }}</a>{% endcomment %}
-                                                </div>
-                                                <div class="price-holder">
-                                                    <span class="price">€{{ item.coffeeitem.price }}</span>
-                                                    <a href="#" class="decrease_cart" data-id="{{ item.coffeeitem.id }}" id="{{item.id}}" data-url="{% url 'decrease_cart' item.coffeeitem.id %}" style="margin-right: 28px;"><i class="icon-minus text-color"></i></a>
-                                                    <label id="qty-{{item.coffeeitem.id}}">0</label>
-                                                    <a href="#" class="add_to_cart" data-id="{{ item.coffeeitem.id }}" data-url="{% url 'add_to_cart' item.coffeeitem.id %}"><i class="icon-plus text-color"></i></a>
-                                                    <a href="#" class="delete_cart" data-id="{{ item.id }}" data-url="{% url 'delete_cart' item.id %}"><i class="icon-delete text-color"></i></a>
-                                                </div>
-                                            </li>
-                                            {% endfor %} {% else %}
-                                            <div class="text-center p-5">
-                                                <h3>Cart is empty </h3>
-                                            </div>
+                                            {% if cart_items %}
+                                              {% for item in cart_items %}
+                                              <li id="cart_item-{{ item.id }}">
+                                                  <div class="image-holder">
+                                                    <img src="{{ item.coffeeitem.image.url }}" alt="dish image"></div>
+                                                  <div class="text-holder">
+                                                      <h6>{{ item.coffeeitem }}</h6>
+                                                      <span>{{ item.coffeeitem.description }}</span>
+                                                      {% comment %}<a href="{% url 'coffee_detail' item.coffeeitem.coffee.coffee_slug %}" class="badge badge-warning">{{ item.coffeeitem.coffee }}</a>{% endcomment %}
+                                                  </div>
+                                                  <div class="price-holder">
+                                                      <span class="price">{{ item.coffeeitem.price }}</span>
+                                                      <a href="#" class="decrease_cart" data-id="{{ item.coffeeitem.id }}" id="{{item.id}}" data-url="{% url 'decrease_cart' item.coffeeitem.id %}" style="margin-right: 28px;">
+                                                        decrease<i class="icon-minus text-color"></i>
+                                                      </a>
+                                                      <label id="qty-{{item.coffeeitem.id}}">0</label>
+                                                      <a href="#" class="add_to_cart" data-id="{{ item.coffeeitem.id }}" data-url="{% url 'add_to_cart' item.coffeeitem.id %}">
+                                                        add<i class="icon-plus text-color"></i>
+                                                      </a>
+                                                      <a href="#" class="delete_cart" data-id="{{ item.id }}" data-url="{% url 'delete_cart' item.id %}">delete<i class="icon-delete text-color"></i></a>
+                                                  </div>
+                                              </li>
+                                              {% endfor %}
+                                            {% else %}
+                                              <div class="text-center p-5">
+                                                  <h3>Cart is empty </h3>
+                                              </div>
                                             {% endif %}
                                         </ul>
                                     </div>
                                     {% for item in cart_items %}
-
-                                    <span id="qty-{{item.coffeeitem.id}}" class="item_qty" data-qty="{{ item.quantity }}"></span> {% endfor %}
+                                      <span id="qty-{{item.coffeeitem.id}}" class="item_qty" data-qty="{{ item.quantity }}">
+                                      </span>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -62,7 +70,7 @@
                                             <li style="list-style-type: none;">
                                                 Subtotal
                                                 <span class="price float-right">
-                                                    <span class="currency">€</span>
+                                                    <span class="currency"></span>
                                                 <span id="subtotal">{{ subtotal }}</span>
                                                 </span>
                                             </li>
@@ -71,7 +79,7 @@
                                             <li style="list-style-type: none;">
                                                 {{ key }} <small>({{ i }}%)</small>
                                                 <span class="price float-right">
-                                                            <span class="currency">€</span>
+                                                            <span class="currency"></span>
                                                 <span id="tax-{{ key }}">{{ j }}</span>
                                                 </span>
                                             </li>
@@ -80,7 +88,7 @@
                                             <li style="list-style-type: none; font-weight:600">
                                                 TOTAL
                                                 <span class="price float-right">
-                                                    <span class="currency">€</span>
+                                                    <span class="currency"></span>
                                                 <span id="total">{{ grand_total }}</span>
                                                 </span>
                                             </li>

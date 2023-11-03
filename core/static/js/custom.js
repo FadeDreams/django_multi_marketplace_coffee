@@ -27,24 +27,24 @@ $(document).ready(function() {
       data: data,
       success: function(response) {
         console.log(response)
-        //if (response.status == 'login_required') {
-        //swal(response.message, '', 'info').then(function() {
-        //window.location = '/login';
-        //})
-        //}
-        //if (response.status == 'Failed') {
-        //swal(response.message, '', 'error')
-        //} else {
-        $('#cart_counter').html(response.cart_counter['cart_count']);
-        $('#qty-' + coffee_id).html(response.qty);
+        if (response.status == 'login_required') {
+          //swal(response.message, '', 'info').then(function() {
+          alert(response.message, '', 'info').then(function() {
+            window.location = '/login';
+          })
+        }
+        if (response.status == 'Failed') {
+          //swal(response.message, '', 'error')
+        } else {
+          //alert(response.qty)
+          $('#cart_counter').html(response.cart_counter['cart_count']);
+          $('#qty-' + coffee_id).html(response.qty);
 
-        //// subtotal, tax and grand total
-        //applyCartAmounts(
-        //response.cart_amount['subtotal'],
-        //response.cart_amount['tax_dict'],
-        //response.cart_amount['grand_total']
-        //)
-        //}
+          applyCartAmounts(
+            response.cart_amount['subtotal'],
+            response.cart_amount['grand_total']
+          )
+        }
       }
     })
   })
@@ -69,27 +69,27 @@ $(document).ready(function() {
       url: url,
       success: function(response) {
         console.log(response)
-        //if (response.status == 'login_required') {
-        //swal(response.message, '', 'info').then(function() {
-        //window.location = '/login';
-        //})
-        //} else if (response.status == 'Failed') {
-        //swal(response.message, '', 'error')
-        //} else {
-        $('#cart_counter').html(response.cart_counter['cart_count']);
-        $('#qty-' + coffee_id).html(response.qty);
+        if (response.status == 'login_required') {
+          //swal(response.message, '', 'info').then(function() {
+          alert(response.message, '', 'info').then(function() {
+            window.location = '/login';
+          })
+        } else if (response.status == 'Failed') {
+          alert(response.message, '', 'error')
+          //swal(response.message, '', 'error')
+        } else {
+          $('#cart_counter').html(response.cart_counter['cart_count']);
+          $('#qty-' + coffee_id).html(response.qty);
 
-        //applyCartAmounts(
-        //response.cart_amount['subtotal'],
-        //response.cart_amount['tax_dict'],
-        //response.cart_amount['grand_total']
-        //)
-
-        //if (window.location.pathname == '/cart/') {
-        //removeCartItem(response.qty, cart_id)
-        //checkEmptyCart();
-        //}
-        //}
+          applyCartAmounts(
+            response.cart_amount['subtotal'],
+            response.cart_amount['grand_total']
+          )
+          if (window.location.pathname == '/cart/') {
+            removeCartItem(response.qty, cart_id)
+            checkEmptyCart();
+          }
+        }
       }
     })
   })
@@ -97,13 +97,10 @@ $(document).ready(function() {
   // DELETE CART ITEM
   $('.delete_cart').on('click', function(e) {
     e.preventDefault();
-
     //alert('testing');
     //return false;
-
     cart_id = $(this).attr('data-id');
     url = $(this).attr('data-url');
-
     $.ajax({
       type: 'GET',
       url: url,
@@ -113,14 +110,13 @@ $(document).ready(function() {
           swal(response.message, '', 'error')
         } else {
           $('#cart_counter').html(response.cart_counter['cart_count']);
-          swal(response.status, response.message, "success")
+          //swal(response.status, response.message, "success")
+          alert(response.status, response.message, "success")
 
           applyCartAmounts(
             response.cart_amount['subtotal'],
-            response.cart_amount['tax_dict'],
             response.cart_amount['grand_total']
           )
-
           removeCartItem(0, cart_id);
           checkEmptyCart();
         }
@@ -145,21 +141,11 @@ $(document).ready(function() {
   }
 
   // apply cart amounts
-  function applyCartAmounts(subtotal, tax_dict, grand_total) {
+  function applyCartAmounts(subtotal, grand_total) {
     if (window.location.pathname == '/cart/') {
       $('#subtotal').html(subtotal)
       $('#total').html(grand_total)
 
-      console.log(tax_dict)
-      for (key1 in tax_dict) {
-        console.log(tax_dict[key1])
-        for (key2 in tax_dict[key1]) {
-          // console.log(tax_dict[key1][key2])
-          $('#tax-' + key1).html(tax_dict[key1][key2])
-
-        }
-
-      }
     }
   }
 

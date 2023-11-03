@@ -115,6 +115,14 @@ def delete_cart(request, cart_id):
             return JsonResponse({'status':'Failed', 'message': 'Invalid request!'})
 
 
+
 @login_required(login_url = 'login')
 def cart(request):
-    ...
+    cart_items = Cart.objects.filter(user=request.user).order_by('created_at')
+    context = {
+        'cart_items': cart_items,
+    }
+    return render(request, 'bazaar/cart.html', context)
+
+def checkout(request):
+    return render(request, 'bazaar/checkout.html')
