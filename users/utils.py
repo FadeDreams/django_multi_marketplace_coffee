@@ -11,6 +11,7 @@ from django.template.loader import render_to_string
 
 from django.core.exceptions import ValidationError
 import os
+from core.settings import settings
 
 load_dotenv()
 

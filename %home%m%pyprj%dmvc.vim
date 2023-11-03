@@ -35,18 +35,15 @@ else
   set shortmess=aoO
 endif
 badd +1 ~/pyprj/dmvc
-badd +11 coffee/models.py
-badd +1 .secret
-badd +31 templates/users/customerdashboard.html
-badd +1 templates/users/coffeedashboard.html
-badd +129 users/views.py
-badd +4 templates/home.html
-badd +15 templates/includes/cover.html
-badd +37 templates/includes/navbar.html
-badd +10 users/urls.py
+badd +95 coffee/views.py
+badd +23 templates/coffee/add_category.html
+badd +4 cat/forms.py
+badd +10 cat/models.py
+badd +32 templates/coffee/menus.html
 argglobal
 %argdel
 $argadd ~/pyprj/dmvc
+edit coffee/views.py
 wincmd t
 let s:save_winminheight = &winminheight
 let s:save_winminwidth = &winminwidth
@@ -54,6 +51,15 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
+argglobal
+balt templates/coffee/menus.html
+let s:l = 97 - ((6 * winheight(0) + 11) / 22)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 97
+normal! 0
+lcd ~/pyprj/dmvc
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

@@ -35,8 +35,8 @@ $(document).ready(function() {
         //if (response.status == 'Failed') {
         //swal(response.message, '', 'error')
         //} else {
-        //$('#cart_counter').html(response.cart_counter['cart_count']);
-        //$('#qty-' + coffee_id).html(response.qty);
+        $('#cart_counter').html(response.cart_counter['cart_count']);
+        $('#qty-' + coffee_id).html(response.qty);
 
         //// subtotal, tax and grand total
         //applyCartAmounts(
@@ -69,27 +69,27 @@ $(document).ready(function() {
       url: url,
       success: function(response) {
         console.log(response)
-        if (response.status == 'login_required') {
-          swal(response.message, '', 'info').then(function() {
-            window.location = '/login';
-          })
-        } else if (response.status == 'Failed') {
-          swal(response.message, '', 'error')
-        } else {
-          $('#cart_counter').html(response.cart_counter['cart_count']);
-          $('#qty-' + coffee_id).html(response.qty);
+        //if (response.status == 'login_required') {
+        //swal(response.message, '', 'info').then(function() {
+        //window.location = '/login';
+        //})
+        //} else if (response.status == 'Failed') {
+        //swal(response.message, '', 'error')
+        //} else {
+        $('#cart_counter').html(response.cart_counter['cart_count']);
+        $('#qty-' + coffee_id).html(response.qty);
 
-          applyCartAmounts(
-            response.cart_amount['subtotal'],
-            response.cart_amount['tax_dict'],
-            response.cart_amount['grand_total']
-          )
+        //applyCartAmounts(
+        //response.cart_amount['subtotal'],
+        //response.cart_amount['tax_dict'],
+        //response.cart_amount['grand_total']
+        //)
 
-          if (window.location.pathname == '/cart/') {
-            removeCartItem(response.qty, cart_id)
-            checkEmptyCart();
-          }
-        }
+        //if (window.location.pathname == '/cart/') {
+        //removeCartItem(response.qty, cart_id)
+        //checkEmptyCart();
+        //}
+        //}
       }
     })
   })

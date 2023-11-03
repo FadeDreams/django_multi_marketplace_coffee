@@ -3,6 +3,7 @@ from django.urls import path, include
 from .views import home
 from django.conf import settings
 from django.conf.urls.static import static
+from bazaar import views as baazarViews
 
 urlpatterns = [
     path('', home, name='home'),
@@ -10,6 +11,7 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('coffee/', include('coffee.urls')),
     path('bazaar/', include('bazaar.urls')),
+    path('cart/', baazarViews.cart, name='cart'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
