@@ -1,13 +1,13 @@
 {% extends 'base.html' %} {% load static %} {% block content %} {% include 'includes/alerts.html' %}
 
 <div class="main-section">
-    {% include 'includes/cover.html' %}
+    {% include 'customers/cover.html' %}
     <div class="page-section account-header buyer-logged-in">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <!-- Load the sidebar here -->
-                    {% include 'includes/cl_sidebar.html' %}
+                    {% include 'includes/c_sidebar.html' %}
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                     <div class="user-dashboard loader-holder">
@@ -53,7 +53,7 @@
                                                         <td><img src="{{ item.coffeeitem.image.url }}" width="60" alt="Coffee Image"></td>
                                                         <td>
                                                             <p class="mb-0"><b>{{ item.coffeeitem }}</b></p>
-                                                            {% comment %}<a class="text-muted" href="{% url 'coffee_detail' item.coffeeitem.coffee.coffee_slug  %}">{{ item.coffeeitem.coffee.coffee_name }}</a>{% endcomment %}
+                                                            <a class="text-muted" href="{% url 'coffee_detail' item.coffeeitem.coffee.coffee_slug  %}">{{ item.coffeeitem.coffee.coffee_name }}</a>
 
                                                         </td>
                                                         <td>{{ item.quantity }} QTY</td>
@@ -80,7 +80,7 @@
                                                             TOTAL
                                                             <span class="price float-right">
                                                                 <span class="currency">€</span>
-                                                            <span id="total">{{ grand_total }}</span>
+                                                            <span id="total">{{ order.total }}</span>
                                                             </span>
                                                         </li>
                                                     </ul>

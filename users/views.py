@@ -4,9 +4,10 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.shortcuts import get_object_or_404
 
 
-from .forms import UserForm
+from .forms import UserForm, UserProfileForm, UserInfoForm
 from coffee.forms import CoffeeForm
 from .models import User, UserProfile
 from coffee.models import Coffee
@@ -217,3 +218,43 @@ def reset_password(request):
             messages.error(request, 'Password do not match!')
             return redirect('reset_password')
     return render(request, 'accounts/reset_password.html')
+
+
+def clprofile(request):
+    profile = get_object_or_404(UserProfile, user=request.user)
+    if request.method == 'POST':
+        profile_form = UserProfileForm(request.POST, request.FILES, instance=profile)
+        user_form = UserInfoForm(request.POST, instance=request.user)
+        if profile_form.is_valid() and user_form.is_valid():
+            profile_form.save()
+            user_form.save()
+
+            address = profile_form.cleaned_data.get('address')
+            if address:
+                geo = utils.geocode_address(address)
+                if geo:
+                    profile.latitude, profile.longitude = geo
+                    profile.save()
+
+            messages.success(request, 'Profile updated')
+            return redirect('clprofile')
+        else:
+            print(profile_form.errors)
+            print(user_form.errors)
+    else:
+        profile_form = UserProfileForm(instance=profile)
+        user_form = UserInfoForm(instance=request.user)
+    
+    context = {
+        'profile_form': profile_form,
+        'user_form': user_form,
+        'profile': profile,
+    }
+    return render(request, 'customers/clprofile.html', context)
+
+
+def my_orders(request):
+    ...
+
+def order_detail(request):
+    ...

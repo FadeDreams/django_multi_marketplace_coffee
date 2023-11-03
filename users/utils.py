@@ -1,4 +1,5 @@
 from django.conf import Settings
+import math
 from django.core.exceptions import PermissionDenied
 from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
@@ -12,6 +13,8 @@ from django.template.loader import render_to_string
 from django.core.exceptions import ValidationError
 import os
 from core.settings import settings
+from geopy.geocoders import Nominatim
+from geopy.exc import GeocoderTimedOut
 
 load_dotenv()
 
@@ -76,3 +79,36 @@ def allow_only_images_validator(value):
     valid_extensions = ['.png', '.jpg', '.jpeg']
     if not ext.lower() in valid_extensions:
         raise ValidationError('Unsupported file extension. Allowed extensions:' +str(valid_extensions))
+
+
+def geocode_address(address):
+    geolocator = Nominatim(user_agent="your_app_name")
+    try:
+        location = geolocator.geocode(address)
+        if location:
+            return location.latitude, location.longitude
+    except GeocoderTimedOut:
+        pass  # Handle the timeout error gracefully
+    return None, None
+
+
+
+def haversine(lat1, lon1, lat2, lon2):
+    # Radius of the Earth in kilometers
+    radius = 6371
+
+    # Convert latitude and longitude from degrees to radians
+    lat1 = math.radians(lat1)
+    lon1 = math.radians(lon1)
+    lat2 = math.radians(lat2)
+    lon2 = math.radians(lon2)
+
+    # Haversine formula
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+    a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    distance = radius * c
+
+    return distance
+

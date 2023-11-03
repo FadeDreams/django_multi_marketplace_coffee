@@ -11,6 +11,8 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('coffee/', include('coffee.urls')),
     path('bazaar/', include('bazaar.urls')),
+    path('orders/', include('orders.urls')),
+    # path('clients/', include('clients.urls')),
     path('cart/', baazarViews.cart, name='cart'),
     path('checkout/', baazarViews.checkout, name='checkout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -47,6 +47,8 @@ MY_APPS = [
     'coffee',
     'cat',
     'bazaar',
+    'clients',
+    'orders',
 ]
 INSTALLED_APPS = D_APPS + MY_APPS
 
@@ -155,3 +157,5 @@ EMAIL_USE_TLS = bool(os.getenv("EMAIL_USE_TLS"))  # Convert to boolean
 TESTEMAIL1 = os.getenv("TESTEMAIL1")
 TESTEMAIL2 = os.getenv("TESTEMAIL2")
 
+STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')

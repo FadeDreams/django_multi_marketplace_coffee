@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
@@ -18,5 +18,7 @@ urlpatterns = [
     path('reset_password/', views.reset_password, name='reset_password'),
 
     # path('sendemail/', views.sendemail, name='sendemail'),
+    path('coffee/', include('coffee.urls')),
+    path('clients/', include('clients.urls')),
 ]
 
