@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load socialaccount %}
 {% block content%}
 <div class="main-section">
     <div class="page-section nopadding cs-nomargin" style="margin-top: 0px;padding-top: 60px;padding-bottom: 60px;margin-bottom: 0px;">
@@ -55,6 +55,12 @@
                                 </li>
                             </ul>
                         </form>
+                        <button class="btn btn-outline-info">
+                          <a href="{% provider_login_url 'google'%}?next=/">
+                            <i class="fab fa-google"></i>
+                            Login with Google
+                          </a>
+                        </button>
                     </div>
                 </div>
                     </div>

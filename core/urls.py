@@ -20,6 +20,8 @@ urlpatterns = [
     path('success/', ordersViews.order_complete, name='success'),
     path('cancel/', ordersViews.cancelview, name='cancel'),
 
+    path('', include('allauth.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

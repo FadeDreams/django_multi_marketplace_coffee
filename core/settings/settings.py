@@ -41,6 +41,12 @@ D_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    "allauth.socialaccount.providers.github",
 ]
 MY_APPS = [
     'users',
@@ -60,7 +66,49 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #allauth
+    "allauth.account.middleware.AccountMiddleware",
 ]
+# Provider specific settings allauth
+SITE_ID = 2
+SOCIALACCOUNT_LOGIN_ON_GET=True
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        # 'APP': {
+            # 'client_id': '123',
+            # 'secret': '456',
+            # 'key': ''
+        # }
+    }
+}
+LOGIN_REDIRECT_URL = 'users/login/'
+# LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
+SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_LOGOUT_ON_GET= True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_REQUIRED = True
+
+# ACCOUNT_USERNAME_REQUIRED = False
+# SOCIALACCOUNT_QUERY_EMAIL = True
+
 
 ROOT_URLCONF = 'core.urls'
 
@@ -79,6 +127,8 @@ TEMPLATES = [
                 'users.context_processors.get_coffee',
                 'bazaar.context_processors.get_cart_counter',
                 'bazaar.context_processors.get_cart_amounts',
+                ###allauth
+                'django.template.context_processors.request',
 
                 
             ],
@@ -86,8 +136,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'core.wsgi.application'
 
+
+WSGI_APPLICATION = 'core.wsgi.application'
 
 
 
@@ -160,3 +211,5 @@ TESTEMAIL2 = os.getenv("TESTEMAIL2")
 STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 STRIPE_ENDPOINT_SECRET = os.getenv('STRIPE_ENDPOINT_SECRET')
+
+
