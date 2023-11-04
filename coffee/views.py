@@ -14,6 +14,8 @@ from .utils import get_coffee
 from cat.forms import CategoryForm, CoffeeItemForm
 from cat.models import Category, CoffeeItem
 
+from orders.models import Order, OrderedCoffee
+
 
 
 @login_required(login_url='login')
@@ -187,3 +189,19 @@ def delete_coffee(request, pk=None):
     coffee.delete()
     messages.success(request, 'Coffee Item has been deleted successfully!')
     return redirect('coffeeitems_by_category', coffee.category.id)
+
+
+def order_detail(request, order_number):
+    try:
+        order = Order.objects.get(order_number=order_number, is_ordered=True)
+        ordered_coffee = OrderedCoffee.objects.filter(order=order, coffeeitem__coffee=get_coffee(request))
+    
+        context = {
+            'order': order,
+            'ordered_coffee': ordered_coffee,
+            'subtotal': order.get_total_by_coffee()['subtotal'],
+            'grand_total': order.get_total_by_coffee()['grand_total'],
+        }  
+    except:
+        return redirect('coffee')
+    return render(request, 'customers/order_detail.html', context)

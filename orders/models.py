@@ -60,7 +60,7 @@ class Order(models.Model):
     
     
     def get_total_by_coffee(self):
-        coffee = Coffee.objects.get(user=request_object.user)
+        coffee = Coffee.objects.get(user=self.user)
         subtotal = 0
         if self.total_data:
             total_data = json.loads(self.total_data)

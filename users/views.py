@@ -140,7 +140,7 @@ def userDashboard(request):
         'orders_count': orders.count(),
         'recent_orders': recent_orders,
     }
-    return render(request, 'users/customerdashboard.html', {'user': request.user})
+    return render(request, 'users/customerdashboard.html', context)
 
 
 @login_required(login_url='login')
@@ -150,7 +150,15 @@ def coffeeDashboard(request):
     # coffee = Coffee.objects.get(user=request.user)
     # print(coffee)
     # return render(request, 'users/coffeedashboard.html', {'coffee': coffee})
-    return render(request, 'users/coffeedashboard.html')
+    coffee = Coffee.objects.get(user=request.user)
+    orders = Order.objects.filter(coffees__in=[coffee.id], is_ordered=True).order_by('-created_at')
+    recent_orders = orders[:10]
+    context = {
+        'orders': orders,
+        'orders_count': orders.count(),
+        'recent_orders': recent_orders,
+    }
+    return render(request, 'users/coffeedashboard.html', context)
 
 @login_required(login_url='login')
 def myAccount(request):

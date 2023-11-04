@@ -17,4 +17,6 @@ urlpatterns = [
     path('menus/coffee/add/', views.add_coffee, name='add_coffee'),
     path('menus/coffee/edit/<int:pk>/', views.edit_coffee, name='edit_coffee'),
     path('menus/coffee/delete/<int:pk>/', views.delete_coffee, name='delete_coffee'),
+
+    path('order_detail/<int:order_number>/', views.order_detail, name='coffee_order_detail'),
 ]
