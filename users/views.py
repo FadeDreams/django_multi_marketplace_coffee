@@ -5,12 +5,14 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import get_object_or_404
+import simplejson as json
 
 
 from .forms import UserForm, UserProfileForm, UserInfoForm
 from coffee.forms import CoffeeForm
 from .models import User, UserProfile
 from coffee.models import Coffee
+from orders.models import Order, OrderedCoffee
 from . import utils
 
 # def sendemail(request):
@@ -131,7 +133,15 @@ def logout(request):
 def userDashboard(request):
     # print("roleeeeeeeeee", request.user.role)
     # print("roleeeeeeeeee", request.user.first_name)
+    orders = Order.objects.filter(user=request.user, is_ordered=True)
+    recent_orders = orders[:5]
+    context = {
+        'orders': orders,
+        'orders_count': orders.count(),
+        'recent_orders': recent_orders,
+    }
     return render(request, 'users/customerdashboard.html', {'user': request.user})
+
 
 @login_required(login_url='login')
 @user_passes_test(utils.check_coffee_role)
@@ -254,7 +264,30 @@ def clprofile(request):
 
 
 def my_orders(request):
-    ...
+    # coffee = Coffee.objects.get(user=request.user)
+    # orders = Order.objects.filter(coffees__in=[coffee.id], is_ordered=True).order_by('-created_at')
+    email = request.user.email
+    orders = Order.objects.filter(email=email, is_ordered=True).order_by('-created_at')
+    
+    context = {
+       'orders': orders,
+    }
+    return render(request, 'customers/my_orders.html', context)
 
-def order_detail(request):
-    ...
+
+def order_detail(request, order_number):
+    try:
+        order = Order.objects.get(order_number=order_number, is_ordered=True)
+        ordered_coffee = OrderedCoffee.objects.filter(order=order)      
+        subtotal = 0
+        for item in ordered_coffee:
+            subtotal += (item.price * item.quantity)
+        context = {
+            'order': order,
+            'ordered_coffee': ordered_coffee,
+            'subtotal': subtotal,
+            
+        }
+        return render(request, 'customers/order_detail.html', context)
+    except:
+        return redirect('customer')
