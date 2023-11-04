@@ -72,7 +72,7 @@
                                                     {% comment %}<a href="{% url 'coffee_detail' item.coffeeitem.coffee.coffee_slug %}" class="badge badge-warning">{{ item.coffeeitem.coffee }}</a>{% endcomment %}
                                                 </div>
                                                 <div class="price-holder">
-                                                    <span class="price">€{{ item.coffeeitem.price }}</span>
+                                                    <span class="price">{{ item.coffeeitem.price }}</span>
                                                 </div>
                                                 <div class="quantity" style="display: inline-block; position: absolute; top: 50%; transform: translateY(-50%); margin-top: -9px;">
                                                     <span>{{ item.quantity }} QTY</span>

@@ -34,16 +34,21 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 ~/pyprj/dmvc
-badd +95 coffee/views.py
-badd +23 templates/coffee/add_category.html
-badd +4 cat/forms.py
-badd +10 cat/models.py
-badd +32 templates/coffee/menus.html
+badd +64 users/utils.py
+badd +160 core/settings/settings.py
+badd +14 core/urls.py
+badd +145 bazaar/views.py
+badd +144 templates/bazaar/checkout.html
+badd +86 templates/bazaar/cart.html
+badd +1 orders/apps.py
+badd +5 orders/admin.py
+badd +10 orders/urls.py
+badd +94 orders/views.py
+badd +145 templates/orders/place_order.html
 argglobal
 %argdel
 $argadd ~/pyprj/dmvc
-edit coffee/views.py
+edit templates/orders/place_order.html
 wincmd t
 let s:save_winminheight = &winminheight
 let s:save_winminwidth = &winminwidth
@@ -52,12 +57,11 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-balt templates/coffee/menus.html
-let s:l = 97 - ((6 * winheight(0) + 11) / 22)
+let s:l = 145 - ((7 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 97
+keepjumps 145
 normal! 0
 lcd ~/pyprj/dmvc
 tabnext 1

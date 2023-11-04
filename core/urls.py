@@ -4,6 +4,7 @@ from .views import home
 from django.conf import settings
 from django.conf.urls.static import static
 from bazaar import views as baazarViews
+from orders import views as ordersViews
 
 urlpatterns = [
     path('', home, name='home'),
@@ -15,6 +16,10 @@ urlpatterns = [
     # path('clients/', include('clients.urls')),
     path('cart/', baazarViews.cart, name='cart'),
     path('checkout/', baazarViews.checkout, name='checkout'),
+
+    path('success/', ordersViews.order_complete, name='success'),
+    path('cancel/', ordersViews.cancelview, name='cancel'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

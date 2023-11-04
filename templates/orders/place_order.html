@@ -47,7 +47,7 @@
                                                     <td><img src="{{ item.coffeeitem.image.url }}" width="60" alt="Coffee Image"></td>
                                                     <td><b style="line-height:20px;">{{ item.coffeeitem }}</b></td>
                                                     <td>{{ item.quantity }}</td>
-                                                    <td>€{{ item.coffeeitem.price }}</td>
+                                                    <td>{{ item.coffeeitem.price }}</td>
                                                 </tr>
                                                 {% endfor %}
                                             </tbody>
@@ -56,7 +56,7 @@
                                             <li style="list-style-type: none;">
                                                 Subtotal
                                                 <span class="price float-right">
-                                                    <span class="currency">€</span>
+                                                    <span class="currency"></span>
                                                 <span id="subtotal">{{ subtotal }}</span>
                                                 </span>
                                             </li>
@@ -64,7 +64,7 @@
                                             <li style="list-style-type: none;">
                                                 {{ key }} <small>({{ i }}%)</small>
                                                 <span class="price float-right">
-                                                            <span class="currency">€</span>
+                                                            <span class="currency"></span>
                                                 <span id="tax-{{ key }}">{{ j }}</span>
                                                 </span>
                                             </li>
@@ -73,12 +73,13 @@
                                             <li style="list-style-type: none; font-weight:600">
                                                 TOTAL
                                                 <span class="price float-right">
-                                                    <span class="currency">€</span>
+                                                    <span class="currency"></span>
                                                 <span id="total">{{ grand_total }}</span>
                                                 </span>
                                             </li>
                                             <!-- Set up a container element for the button from developer PayPal buttons integrations site -->
                                             <div id="paypal-button-container"></div>
+                                            <button class="button is-primary" id="submitBtn">Purchase!</button>
                                         </ul>
                                     </div>
                                 </div>
@@ -91,7 +92,9 @@
     </div>
 </div>
 
+<script src="https://js.stripe.com/v3/"></script>
 <script>
+
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -108,64 +111,44 @@
         return cookieValue;
     }
     var grand_total = "{{ grand_total }}"
-    var url = "{% url 'payments' %}"
+    var url = "{% url 'config' %}"
     var order_number = "{{ order.order_number }}"
+
+    // Check if order_number is not empty or undefined
+    if (order_number) {
+        var createCheckoutUrl = "{% url 'create-checkout-session' order_number='placeholder' %}";
+        createCheckoutUrl = createCheckoutUrl.replace('placeholder', order_number);
+    } else {
+        alert("Order number is not set or is empty.");
+    }
+
     const csrftoken = getCookie('csrftoken');
     var order_complete = "{% url 'order_complete' %}"
     console.log('csrftoken===>', csrftoken)
-        // Render the PayPal button into #paypal-button-container
-    paypal.Buttons({
 
-        // Set up the transaction
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: grand_total
-                    }
-                }]
-            });
-        },
+    console.log("Sanity check!");
+    console.log(url);
 
-        // Finalize the transaction
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(orderData) {
-                // Successful capture! For demo purposes:
-                // console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                console.log(orderData)
-                var transaction = orderData.purchase_units[0].payments.captures[0];
-                console.log(transaction.id)
-                    // alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
-                var transaction_id = transaction.id
-                var status = orderData.status
-                var payment_method = 'PayPal'
-                sendTransaction(transaction_id, payment_method, status)
-                    // Replace the above to show a success message within this page, e.g.spinner
-                const element = document.getElementById('paypal-button-container');
-                element.innerHTML = '';
-                element.innerHTML = '<h4 class="text-center"><i class="fa fa-spinner fa-spin" ></i>Please wait ...</h4>';
-                // Or go to another URL:  actions.redirect('thank_you.html');
-            });
-        }
-    }).render('#paypal-button-container');
+    fetch(url)
+    .then((result) => { return result.json(); })
+    .then((data) => {
+      // Initialize Stripe.js
+      const stripe = Stripe(data.publicKey);
 
-    // Send the data to payments view to store in the database
-    function sendTransaction(transaction_id, payment_method, status) {
-        $.ajax({
-            type: 'POST',
-            url: url,
-            data: {
-                'order_number': order_number,
-                'transaction_id': transaction_id,
-                'payment_method': payment_method,
-                'status': status,
-                'csrfmiddlewaretoken': csrftoken
-            },
-            success: function(response) {
-                console.log('response===>', response)
-                window.location.href = order_complete + '?order_no=' + response.order_number + '&trans_id=' + response.transaction_id
-            }
+      document.querySelector("#submitBtn").addEventListener("click", () => {
+        // Get Checkout Session ID
+        fetch(createCheckoutUrl)
+        .then((result) => { return result.json(); })
+        .then((data) => {
+          console.log(data);
+          // Redirect to Stripe Checkout
+          return stripe.redirectToCheckout({sessionId: data.sessionId})
         })
-    }
+        .then((res) => {
+          console.log(res);
+        });
+      });
+    });
+
 </script>
 {% endblock %}
