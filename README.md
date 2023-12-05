@@ -1,6 +1,6 @@
 ## Django Multi Marketplace App
 
-The DMVC (Django Marketplace) is a sophisticated marketplace app built using Django, catering to two distinct user groups: cafe shoppers and clients. The app provides an interactive platform where cafe shoppers can add coffees, and clients can make purchases using the Stripe payment gateway.
+The all is a sophisticated marketplace app built using Django, catering to two distinct user groups: cafe shoppers and clients. The app provides an interactive platform where cafe shoppers can add coffees, and clients can make purchases using the Stripe payment gateway.
 
 ## Overview
 
